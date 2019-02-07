@@ -36,5 +36,6 @@ AC_CHECK_HEADERS(X11/extensions/Xrender.h, [], AC_MSG_ERROR([missing libxrender 
 
 AC_OUTPUT([Makefile
 src/Makefile
+man/Makefile
 ])
 

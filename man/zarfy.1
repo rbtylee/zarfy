@@ -1,0 +1,41 @@
+.TH "zarfy" 1
+.SH NAME
+zarfy \- A graphical front end to librandr
+.SH SYNOPSIS
+.B zarfy [-l | -s] [-d display]
+.SH DESCRIPTION
+zarfy is a graphical front end to libXrandr, allowing for on-the-fly configuration
+of multiple monitors with no need for restarting the Xserver. 
+
+In normal mode (no command line options) a representation of the virtual screen area is displayed
+with each active output mapped onto it. To position an output device, select it
+by clicking on it's thumb at the top of the window, then click the map area where it should go.
+By default, the click is interpreted as "right-of", "beneath", etc., relative to the output
+nearest to the click. Alternately, free positioning can be done by clicking off the "snap-to"
+button.
+
+zarfy saves your monitor configuration on apply/ok and automatically loads it on next run.
+
+zarfy supports scripting for rotation/reflection. If you have a script for adjusting an input device
+when a monitor is rotated/reflected (eg. tablet pc users), it can be set to execute autmatically when zarfy
+transforms the output monitor. zarfy looks for scripts of the form "~/.zarfy/<xdisplay_name>/<output_name>_RR.sh" and, if it exists,
+executes it with one of the following arguments: "rotate_none", "rotate_left", "rotate_right", "rotate_180",
+"refect_x", "reflect_y", "unreflect_x", "unreflect_y".
+.SH OPTIONS
+.TP
+.B \-l
+Just load the last configuration and exit...no gui. 
+.TP
+.B \-s
+Quick switch mode. A simple popup gui to quickly switch between combinations
+of displays, suitable for launch from a function key. Use the left/right arrow keys
+to step between combos, enter to select & exit, or use the mouse.
+.TP
+.B \-d display
+Specify the X display name. If not given, defaults to current display.
+.SH SEE ALSO
+
+.SH BUGS
+None known
+
+

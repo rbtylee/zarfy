@@ -1,5 +1,5 @@
 
-SUBDIRS = src
+SUBDIRS = src man
 
 MAINTAINERCLEANFILES = \
 ABOUT-NLS* \
@@ -26,8 +26,7 @@ EXTRA_DIST = \
 	data/lcd.png \
 	data/vga.png \
 	data/tv.png \
-	data/zarfy.png \
-	man/zarfy.1.gz
+	data/zarfy.png 
 
 install-data-local:
 	@$(NORMAL_INSTALL)
@@ -37,8 +36,6 @@ install-data-local:
 	      $(INSTALL_DATA) $$fname $(pkgdatadir); \
 	    fi \
 	  done;
-	  $(mkinstalldirs) $(mandir)/man1; \
-	  $(INSTALL_DATA) man/zarfy.1.gz $(mandir)/man1
 
 uninstall-local:
 	@$(NORMAL_UNINSTALL)
@@ -47,7 +44,4 @@ uninstall-local:
 	      rm $$fname; \
 	    fi \
 	  done; \
-	rmdir $(pkgdatadir); \
-	rm $(mandir)/man1/zarfy.*
-
-
+	rmdir $(pkgdatadir);
