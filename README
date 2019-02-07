@@ -1,0 +1,111 @@
+
+zarfy - a graphical front end to RandR >=1.2
+=============================================
+
+Written by Jim Allingham <supergring0@yahoo.com>
+zarfy is Software Libre released under version 3 of the GPL.
+
+
+INSTALLATION
+============
+
+To install from tarball:
+
+>tar -xf zarfy-0.1.0.tar.gz
+>cd zarfy-0.1.0
+>./configure
+>make
+as root> make install
+
+"make uninstall" will remove all files installed by this program.
+
+
+DEPENDENCIES
+============
+
+gtk+-2.0
+gdk-pixbuf
+libglade
+libxrandr
+libxrender
+
+For Debian & debian-based distros
+
+apt-get install gdk-pixbuf gdk-pixbuf-dev libglade2-dev libx11-dev libxrandr-dev libxrender-dev
+
+should do it.
+
+
+LOAD & EXIT MODE
+================
+
+Command: zarfy -l
+
+Loads the last configuration and exits - no gui.
+Can be used eg. to configure displays on startup:
+system->preferences->sessions->startup programs->add zarfy -l
+
+
+QUICK-SWITCH MODE
+=================
+
+Command: zarfy -s
+
+Lets you quickly switch between combinations of displays, simlar to
+the Fn key function of a certain well-known propietary OS :)
+Use the right & left arrow keys to step between combos, Enter to
+select & exit. Or use the mouse - click to select, double click to
+execute & exit.
+
+The follwing sample script (Debian) may be tied to the appropriate
+acpi Fn key. The first keystroke launches zarfy in switch mode,
+successive keystrokes step thorough the possible combinations.
+
+#!/bin/bash
+test -f /usr/share/acpi-support/power-funcs || exit 0
+. /etc/default/acpi-support
+. /usr/share/acpi-support/power-funcs
+. /usr/share/acpi-support/key-constants
+
+if pidof zarfy; then
+	acpi_fakekey $KEY_RIGHT
+else 
+ for x in /tmp/.X11-unix/*; do
+    displaynum=`echo $x | sed s#/tmp/.X11-unix/X##`
+    getXuser;
+    if [ x"$XAUTHORITY" != x"" ]; then
+        export DISPLAY=":$displaynum.0"
+	/usr/local/bin/zarfy -s &
+    fi
+ done
+fi
+
+
+SCRIPTING FOR ROTATE/REFLECT
+============================
+
+Automate rotation/relection on your input device (eg. wacom).
+Upon execution of rotate/reflect on a display, zarfy looks for
+a script associated with that display and, if found, executes it
+with one of the following arguments: "rotate_none", "rotate_left",
+"rotate_right", "rotate_180", "refect_x", "reflect_y", "unreflect_x",
+"unreflect_y". The script must be located in
+
+~/.zarfy/<x_display_name>/
+
+and have the name <output_device>_RR.sh, where <output_device>
+is the driver-specifc name of the device (eg Intel "LVDS", "VGA", etc).
+Device names for your system are displayed under the thumbnails
+at the top of the main zarfy window. The <x_display_name> for the
+default display is created automatically the first time you run zarfy.
+
+LINKS
+=====
+
+For more information on RandR, what cards/drivers are supported,
+how to set up your xorg.conf, etc.
+
+http://wiki.debian.org/XStrikeForce/HowToRandR12
+http://www.thinkwiki.org/wiki/Xorg_RandR_1.2
+http://www.x.org/wiki/Projects/XRandR
+
