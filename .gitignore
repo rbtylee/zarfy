@@ -5,6 +5,7 @@ Makefile.in
 aclocal.m4
 autom4te.cache/
 compile
+config.cache
 config.guess
 config.h
 config.h.in
@@ -20,6 +21,7 @@ src/.deps/
 src/Makefile
 src/Makefile.in
 src/*.o
+src/zarfy
 stamp-h1
 Makefile
 Makefile.in
