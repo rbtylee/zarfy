@@ -151,13 +151,16 @@ draw_thumb(int idx, XRRCrtcInfo *ci, GdkPixbuf *screenshot, double scale)
 	thm[r+1] = gdk_pixbuf_scale_simple(thm[r++], thumb[idx].width, IMAGE_HEIGHT-HEIGHT_ADJUST,
 							GDK_INTERP_BILINEAR);
 
-	gdk_pixbuf_render_to_drawable(thm[r], mntr_pms[idx], draw_gc, 0, 0,
-								FRAME_X+thumb[idx].offset, FRAME_Y,
-								gdk_pixbuf_get_width(thm[r]),
-								gdk_pixbuf_get_height(thm[r]),
-								GDK_RGB_DITHER_NORMAL, 0, 0);
+   if (thm[r])
+		gdk_pixbuf_render_to_drawable(thm[r], mntr_pms[idx], draw_gc, 0, 0,
+									FRAME_X+thumb[idx].offset, FRAME_Y,
+									gdk_pixbuf_get_width(thm[r]),
+									gdk_pixbuf_get_height(thm[r]),
+									GDK_RGB_DITHER_NORMAL, 0, 0);
 
-	for ( i=0;i<=r;i++ ) g_object_unref(thm[i]);
+	for ( i=0;i<=r;i++ ) 
+		if (thm[i])
+			g_object_unref(G_OBJECT(thm[i]));
 }
 
 void
