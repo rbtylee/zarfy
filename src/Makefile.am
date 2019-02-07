@@ -1,3 +1,5 @@
+MAINTAINERCLEANFILES = Makefile.in
+
 INCLUDES = \
 	-DDATA_DIR=\""$(pkgdatadir)"\" \
 	@ZARFY_CFLAGS@
@@ -13,4 +15,3 @@ zarfy_SOURCES =	callbacks.c \
 
 zarfy_LDFLAGS = -rdynamic
 zarfy_LDADD = @ZARFY_LIBS@
-

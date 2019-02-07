@@ -13,14 +13,20 @@ AC_CONFIG_SRCDIR([src/draw.c])
 AC_PROG_CC
 AC_PROG_INSTALL
 AC_PROG_LN_S
-
-PKG_CHECK_MODULES(ZARFY, [gtk+-2.0, gdk-pixbuf-xlib-2.0, libglade-2.0, xrandr])
+dnl ---------------
+dnl math
+dnl ---------------
+AC_CHECK_FUNCS([floor])
+AC_SEARCH_LIBS([floor], [m], [],
+        [AC_MSG_ERROR([Math library not found])])
+PKG_CHECK_MODULES(ZARFY, [gtk+-2.0, gdk-pixbuf-xlib-2.0, libglade-2.0, xrandr, x11])
 AC_SUBST(ZARFY_CFLAGS)
 AC_SUBST(ZARFY_LIBS)
 
 AC_PATH_X
 AC_HEADER_STDC
 CPPFLAGS="`pkg-config --cflags gtk+-2.0 libglade-2.0` $CPPFLAGS"
+
 AC_CHECK_HEADERS(gtk/gtk.h, [], AC_MSG_ERROR([missing libgtk header files.]))
 AC_CHECK_HEADERS(gdk-pixbuf-xlib/gdk-pixbuf-xlib.h, [], AC_MSG_ERROR([libgdk-pixbuf header files.]))
 AC_CHECK_HEADERS(glade/glade.h, [], AC_MSG_ERROR([missing libglade header files.]))

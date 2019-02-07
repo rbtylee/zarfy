@@ -1,5 +1,22 @@
 
 SUBDIRS = src
+
+MAINTAINERCLEANFILES = \
+ABOUT-NLS* \
+Makefile.in \
+aclocal.m4 \
+compile \
+config.guess \
+config.h.in \
+config.h.in~ \
+config.rpath \
+config.sub \
+configure \
+depcomp \
+install-sh \
+ltmain.sh \
+missing
+
 EXTRA_DIST = \
 	data/zarfy.glade \
 	data/monitor.png \
