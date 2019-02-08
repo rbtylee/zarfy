@@ -1,8 +1,13 @@
-#                                               -*- Autoconf -*-
-# Process this file with autoconf to produce a configure script.
+dnl Process this file with autoconf to produce a configure script.
+
+# get rid of that stupid cache mechanism
+rm -f config.cache
 
 AC_PREREQ(2.61)
-AC_INIT(zarfy, [0.1.0], supergring0@yahoo.com)
+
+# Original Code: https://sourceforge.net/projects/zarfy/
+# James S. Allingham <supergring0@yahoo.com>
+AC_INIT(zarfy, 0.1.1, ylee@bodhilinux.com, zarfy, https://github.com/rbtylee/zarfy)
 
 AM_INIT_AUTOMAKE([dist-bzip2])
 AM_MAINTAINER_MODE
@@ -31,7 +36,7 @@ AC_CHECK_HEADERS(gtk/gtk.h, [], AC_MSG_ERROR([missing libgtk header files.]))
 AC_CHECK_HEADERS(gdk-pixbuf-xlib/gdk-pixbuf-xlib.h, [], AC_MSG_ERROR([libgdk-pixbuf header files.]))
 AC_CHECK_HEADERS(glade/glade.h, [], AC_MSG_ERROR([missing libglade header files.]))
 AC_CHECK_HEADERS(X11/Xlib.h, [], AC_MSG_ERROR([missing Xlib header files.]))
-#AC_CHECK_HEADERS(X11/extensions/Xrandr.h, [], AC_MSG_ERROR([missing libxrandr header files.]))
+AC_CHECK_HEADERS(X11/extensions/Xrandr.h, [], AC_MSG_ERROR([missing libxrandr header files.]))
 AC_CHECK_HEADERS(X11/extensions/Xrender.h, [], AC_MSG_ERROR([missing libxrender header files.]))
 
 AC_OUTPUT([Makefile

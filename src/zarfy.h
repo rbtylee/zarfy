@@ -46,6 +46,7 @@
 #include <signal.h>
 
 #define PACKAGE_AUTHOR "J.S. Allingham"
+#define AUTHOR_EMAIL "supergring0@yahoo.com"
 
 #define MON_PIXMAP 			DATA_DIR "/monitor.png"
 #define MON_SEL_PIXMAP 		DATA_DIR "/monitor_s.png"

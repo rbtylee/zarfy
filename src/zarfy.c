@@ -198,7 +198,7 @@ init_graphics()
 	sprintf( buf, "ZARFY\n\nVersion %s", VERSION );
 	gtk_label_set_text ( about_lbl, buf );
 
-	sprintf( buf, "Author %s\n%s", PACKAGE_AUTHOR, PACKAGE_BUGREPORT );
+	sprintf( buf, "\nAuthor %s\n\n<%s>\n", PACKAGE_AUTHOR, AUTHOR_EMAIL );
 	gtk_label_set_text (credits_lbl, buf);
 
 	for ( i=0; i<scres->noutput; i++ )

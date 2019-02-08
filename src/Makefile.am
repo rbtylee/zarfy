@@ -1,6 +1,6 @@
 MAINTAINERCLEANFILES = Makefile.in
 
-INCLUDES = \
+AM_CPPFLAGS = \
 	-DDATA_DIR=\""$(pkgdatadir)"\" \
 	@ZARFY_CFLAGS@
 
