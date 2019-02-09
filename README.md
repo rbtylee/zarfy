@@ -1,43 +1,34 @@
+# zarfy - a GUI front end for RandR >=1.2
+[![Build Status](https://travis-ci.com/rbtylee/zarfy.svg?branch=master)](https://travis-ci.com/rbtylee/zarfy)
 
-zarfy - a graphical front end to RandR >=1.2
-=============================================
+This repository is a fork from Jim Allingham's [original](https://sourceforge.net/projects/zarfy/).
 
-Written by Jim Allingham <supergring0@yahoo.com>
-zarfy is Software Libre released under version 3 of the GPL.
+The initial commit is based from version 0.1.0. Minor changes have been made since it would no longer build (ubuntu 18.04). Compiler warnings and run time errors were fixed.
 
+## Dependencies
 
-INSTALLATION
-============
-
-To install from tarball:
-
->tar -xf zarfy-0.1.0.tar.gz
->cd zarfy-0.1.0
->./configure
->make
-as root> make install
-
-"make uninstall" will remove all files installed by this program.
-
-
-DEPENDENCIES
-============
-
-gtk+-2.0
-gdk-pixbuf
-libglade
-libxrandr
-libxrender
+* The usual build tools, autopoint libtool intltool pkg-config  autotools-dev
+* gtk+-2.0
+* gdk-pixbuf
+* libglade
+* libxrandr
+* libxrender
 
 For Debian & debian-based distros
 
-apt-get install libgdk-pixbuf2.0-dev libglade2-dev libx11-dev libxrandr-dev libxrender-dev
+```sudo apt install libgdk-pixbuf2.0-dev libglade2-dev libx11-dev libxrandr-dev libxrender-dev```
 
 should do it.
 
+## Installation
+```ShellSession
+./autogen.sh
+make
+sudo make install
+```
 
-LOAD & EXIT MODE
-================
+## LOAD & EXIT MODE
+
 
 Command: zarfy -l
 
@@ -46,8 +37,7 @@ Can be used eg. to configure displays on startup:
 system->preferences->sessions->startup programs->add zarfy -l
 
 
-QUICK-SWITCH MODE
-=================
+## QUICK-SWITCH MODE
 
 Command: zarfy -s
 
@@ -61,7 +51,7 @@ The follwing sample script (Debian) may be tied to the appropriate
 acpi Fn key. The first keystroke launches zarfy in switch mode,
 successive keystrokes step thorough the possible combinations.
 
-#!/bin/bash
+```#!/bin/bash
 test -f /usr/share/acpi-support/power-funcs || exit 0
 . /etc/default/acpi-support
 . /usr/share/acpi-support/power-funcs
@@ -79,10 +69,9 @@ else
     fi
  done
 fi
+```
 
-
-SCRIPTING FOR ROTATE/REFLECT
-============================
+## SCRIPTING FOR ROTATE/REFLECT
 
 Automate rotation/relection on your input device (eg. wacom).
 Upon execution of rotate/reflect on a display, zarfy looks for
@@ -99,8 +88,7 @@ Device names for your system are displayed under the thumbnails
 at the top of the main zarfy window. The <x_display_name> for the
 default display is created automatically the first time you run zarfy.
 
-LINKS
-=====
+## LINKS
 
 For more information on RandR, what cards/drivers are supported,
 how to set up your xorg.conf, etc.
@@ -108,4 +96,7 @@ how to set up your xorg.conf, etc.
 http://wiki.debian.org/XStrikeForce/HowToRandR12
 http://www.thinkwiki.org/wiki/Xorg_RandR_1.2
 http://www.x.org/wiki/Projects/XRandR
+
+
+
 
