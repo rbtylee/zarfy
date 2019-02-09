@@ -32,7 +32,7 @@ make
 sudo make install
 ```
 
-## Load $ Exit Mode
+## Load & Exit Mode
 
 Command: **zarfy -l**
 
