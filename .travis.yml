@@ -9,6 +9,7 @@ install:
 
 script:
 - ./autogen.sh
+- make
 
 notifications:
 email: false
