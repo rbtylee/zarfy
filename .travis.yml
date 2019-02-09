@@ -1,0 +1,11 @@
+language: c
+compiler: gcc
+sudo: required
+dist: trusty
+
+install:
+  - sudo apt-get -qq update
+  - sudo apt-get install -y libgdk-pixbuf2.0-dev libglade2-dev libx11-dev libxrandr-dev libxrender-dev
+
+notifications:
+email: false
