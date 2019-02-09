@@ -7,5 +7,8 @@ install:
   - sudo apt-get -qq update
   - sudo apt-get install -y libgdk-pixbuf2.0-dev libglade2-dev libx11-dev libxrandr-dev libxrender-dev
 
+script:
+- autogen.sh
+
 notifications:
 email: false
