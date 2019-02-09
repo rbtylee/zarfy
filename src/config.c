@@ -20,15 +20,21 @@
 
 #include "zarfy.h"
 
+void _set_data_home(void);
+static char _data_home[PATH_MAX]="";
+#define SAFE_DATA_HOME if (_data_home[0] == '\0') _set_data_home()
+
 void
 read_config()
 {
 	FILE *fp;
 	int  i, status=0;
 	size_t n;
-	char *line = getmem( (n = (strlen(home) + strlen(disp->display_name) + 30)), 1 );
 
-	sprintf( line, "%s/.zarfy/%s/outputs.conf", home, disp->display_name ); 
+	SAFE_DATA_HOME;
+	char *line = getmem( (n = (strlen(_data_home) + strlen(disp->display_name) + 30)), 1 );
+
+	sprintf( line, "%s/%s/outputs.conf", _data_home, disp->display_name );
 
 	if  ( (fp=fopen(line, "r")) != NULL ) {
 		for (i=0; i<scres->noutput; i++) {
@@ -37,7 +43,7 @@ read_config()
 				 &conf[i].connection, &conf[i].mode, &conf[i].width, &conf[i].height,
 	 			&conf[i].x, &conf[i].y, &conf[i].rot) != NCONF ) break;
 			if ( strcmp(conf[i].name, outputs[i]->name) != 0 ) break;
-			if ( conf[i].mode != None && outputs[i]->connection == RR_Connected) 
+			if ( conf[i].mode != None && outputs[i]->connection == RR_Connected)
 				if (lookup(outputs[i]->modes, outputs[i]->nmode, conf[i].mode) <0 ) break;
 		}
 		if ( i == scres->noutput ) status=1;
@@ -62,15 +68,17 @@ write_config(void)
 {
 	FILE *fp;
 	int i;
-	char *buf = getmem( strlen(home) + strlen(disp->display_name) + 30, 1 );
 
-	sprintf( buf, "%s/.zarfy", home); 
+	SAFE_DATA_HOME;
+	char *buf = getmem( strlen(_data_home) + strlen(disp->display_name) + 30, 1 );
+
+	sprintf( buf, "%s", _data_home);
 
 /* make the config directory if necessary */
 	for ( i=0; i<2; i++ ) {
-		if ( i == 0 ) sprintf( buf, "%s/.zarfy", home); 
+		if ( i == 0 ) sprintf( buf, "%s/.zarfy", home);
 		else sprintf( &buf[strlen(buf)], "/%s", disp->display_name);
- 
+
 		if ( access(buf, X_OK ) == -1 ) {
 			if (errno == ENOENT) {
 				if ( mkdir(buf, S_IRWXU) == -1 ) {
@@ -88,7 +96,7 @@ write_config(void)
 	}
 
 	strcat(buf, "/outputs.conf");
-	
+
 	if  ( (fp=fopen(buf,"w")) == NULL )	{
 		perror(buf);
 		free(buf);
@@ -109,7 +117,7 @@ write_config(void)
 		}
 		fprintf(fp,"%s %lx %x %lx %d %d %d %d %x\n",
 				conf[i].name, conf[i].crtc, conf[i].connection, conf[i].mode,
-				conf[i].width, conf[i].height, conf[i].x, conf[i].y, conf[i].rot);  
+				conf[i].width, conf[i].height, conf[i].x, conf[i].y, conf[i].rot);
 	}
 
 	fclose(fp);
@@ -124,7 +132,7 @@ set_config(XRROutputInfo *oi)
 
 	if ( lookup(oi->modes, oi->nmode, conf[i].mode) >=0 ) {
 		XRRModeInfo *mi = mode_info( conf[i].mode );
-		
+
 		if ( conf[i].x >= 0 && conf[i].y >=0
 			&& conf[i].width == mi->width && conf[i].height == mi->height
 			&& ( conf[i].x+mi->width <= maxwidth )
@@ -149,14 +157,14 @@ do_scripts()
 	int i;
 
 	for ( i=0; i<scres->ncrtc; i++ ) {
-		
+
 		if ( s_crtcs[i]->rotation == crtcs[i]->rotation ) continue;
 
 		Rotation rot = crtcs[i]->rotation & ROTATE_MASK;
 		Rotation ref = crtcs[i]->rotation & REFLECT_MASK;
 		Rotation oldrot = s_crtcs[i]->rotation & ROTATE_MASK;
 		Rotation oldref = s_crtcs[i]->rotation & REFLECT_MASK;
-		
+
 		if ( rot != oldrot ) {
 			if ( rot == RR_Rotate_0 )
 				exec_script(crtcs[i], "rotate_none");
@@ -167,14 +175,14 @@ do_scripts()
 			else if ( rot == RR_Rotate_270 )
 				exec_script(crtcs[i], "rotate_right");
 		}
-		
+
 		if ( (ref & RR_Reflect_X) != (oldref & RR_Reflect_X) ) {
 			if ( ref & RR_Reflect_X )
 				exec_script(crtcs[i], "reflect_x");
 			else
 				exec_script(crtcs[i], "unreflect_x");
 		}
-		
+
 		if ( (ref & RR_Reflect_Y) != (oldref & RR_Reflect_Y) ) {
 			if ( ref & RR_Reflect_Y )
 				exec_script(crtcs[i], "reflect_y");
@@ -188,9 +196,12 @@ void
 exec_script(XRRCrtcInfo *ci, char * arg)
 {
 	int j, s, status;
-	char *buf = getmem( strlen(home) + strlen(disp->display_name) + 50, 1);
-	s = sprintf(buf, "%s/.zarfy/%s/", home, disp->display_name);
-	
+
+	SAFE_DATA_HOME;
+	char *buf = getmem( strlen(_data_home) + strlen(disp->display_name) + 50, 1);
+
+	s = sprintf(buf, "%s/%s/", _data_home, disp->display_name);
+
 	for (j=0; j<ci->noutput; j++) {
 		XRROutputInfo *oi = output_by_id(ci->outputs[j]);
 		sprintf(&buf[s], "%s_RR.sh", oi->name);
@@ -204,4 +215,29 @@ exec_script(XRRCrtcInfo *ci, char * arg)
 			perror(buf);
 	}
 	free(buf);
+}
+
+void
+_set_data_home()
+{
+	char *xdg_data_home = getenv("XDG_DATA_HOME");
+	if (xdg_data_home)
+	{
+		snprintf(_data_home, PATH_MAX-1, "%s", xdg_data_home);
+		// Strip trailing '/' if it exists
+		const int len = strlen(_data_home);
+		if ( len > 0 && _data_home[len-1] == '/' )
+			_data_home[len-1] = '\0';
+	}
+	else
+		goto not_set;
+	// Ensure it is a valid dir
+	struct stat statbuf;
+	stat(_data_home, &statbuf);
+	if(S_ISDIR(statbuf.st_mode))
+		 return;
+
+not_set:
+	snprintf(_data_home, PATH_MAX-1, "%s/.local/share/zarfy", home);
+	return;
 }
