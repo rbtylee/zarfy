@@ -17,6 +17,12 @@ install-sh \
 ltmain.sh \
 missing
 
+desktopdir = $(datadir)/applications
+desktop_DATA = zarfy.desktop
+
+icondir = $(datadir)/icons/hicolor/48x48/apps
+icon_DATA = data/zarfy.png 
+
 EXTRA_DIST = \
 	data/zarfy.glade \
 	data/monitor.png \
@@ -25,8 +31,9 @@ EXTRA_DIST = \
 	data/dvi.png \
 	data/lcd.png \
 	data/vga.png \
-	data/tv.png \
-	data/zarfy.png 
+	data/tv.png  \
+	$(desktop_DATA) \
+	$(icon_DATA)
 
 install-data-local:
 	@$(NORMAL_INSTALL)

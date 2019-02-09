@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Zarfy
+GenericName=Screen Settings
+GenericName[de]=Bildschirmeinstellungen
+Icon=zarfy
+Exec=zarfy
+Terminal=false
+Type=Application
+Categories=Settings;HardwareSettings;
+StartupNotify=true
