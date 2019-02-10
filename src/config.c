@@ -225,7 +225,7 @@ _set_data_home()
 	{
 		snprintf(_data_home, PATH_MAX-1, "%s", xdg_data_home);
 		// Strip trailing '/' if it exists
-		const int len = strlen(_data_home);
+		const int len = strnlen(_data_home, PATH_MAX);
 		if ( len > 0 && _data_home[len-1] == '/' )
 			_data_home[len-1] = '\0';
 	}
