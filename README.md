@@ -81,9 +81,9 @@ fi
 Automate rotation/relection on your input device (eg. wacom).
 Upon execution of rotate/reflect on a display, zarfy looks for
 a script associated with that display and, if found, executes it
-with one of the following arguments: "rotate_none", "rotate_left",
-"rotate_right", "rotate_180", "refect_x", "reflect_y", "unreflect_x",
-"unreflect_y". The script must be located in
+with one of the following arguments: "_rotate_none_", "_rotate_left_",
+"_rotate_right_", "_rotate_180_", "_refect_x_", "_reflect_y_", "_unreflect_x_",
+"_unreflect_y_". The script must be located in
 
 > ~/$XDG_DATA_HOME/zarfy/<x_display_name>/ 
 or if XDG_DATA_HOME is undefined:
@@ -95,16 +95,16 @@ Device names for your system are displayed under the thumbnails
 at the top of the main zarfy window. The <x_display_name> for the
 default display is created automatically the first time you run zarfy.
 
-# Reporting bugs
+## Reporting bugs
 
 Please use the GitHub issue tracker for any bugs or feature suggestions:
 
 >https://github.com/rbtylee/zarfy/issues
 
-# Contributing
+## Contributing
 
 Help is always Welcome, as with all Open Source Projects the more people that help the better it gets!
-More translations would be especially welcome and much needed.
+Adding support for translations and the translations themselves would be especially welcome and much needed.
 
 Please submit patches to the code or documentation as GitHub pull requests!
 
