@@ -33,7 +33,7 @@ make
 sudo make install
 ```
 
-# Usage
+## Usage
 
 In  normal  mode (no command line options) a representation of the virtual screen area is displayed with each 
 active output mapped  onto  it. To  position  an  output device, select it by clicking on it's thumb at the top of the
@@ -114,7 +114,7 @@ default display is created automatically the first time you run zarfy.
 
 Please use the GitHub issue tracker for any bugs or feature suggestions:
 
->https://github.com/rbtylee/zarfy/issues
+> <https://github.com/rbtylee/zarfy/issues>
 
 ## Contributing
 
@@ -125,7 +125,7 @@ Please submit patches to the code or documentation as GitHub pull requests!
 
 Contributions must be licensed under this project's copyright (see LICENSE). 
 
-# Credits
+## Credits
 
 Full credit for the original code of this module go to:
 * _*Jim Allingham <supergring0@yahoo.com>*_
@@ -138,8 +138,7 @@ Additional modifications:
 For more information on RandR, what cards/drivers are supported,
 how to set up your xorg.conf, etc.
 
-* http://wiki.debian.org/XStrikeForce/HowToRandR12
-* http://www.thinkwiki.org/wiki/Xorg_RandR_1.2
-* http://www.x.org/wiki/Projects/XRandR
-* [Where is the X.org config file?](https://askubuntu.com/questions/4662/where-is-the-x-org-config-file-how-do-i-configure-x-there)
-
+*   <http://wiki.debian.org/XStrikeForce/HowToRandR12>
+*   <http://www.thinkwiki.org/wiki/Xorg_RandR_1.2>
+*   <http://www.x.org/wiki/Projects/XRandR>
+*   [Where is the X.org config file?](https://askubuntu.com/questions/4662/where-is-the-x-org-config-file-how-do-i-configure-x-there)
