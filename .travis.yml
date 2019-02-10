@@ -18,7 +18,7 @@ jobs:
 
       addons:
           sonarcloud:
-             organization: "rbtylee-github"
+             organization: rbtylee-github
              token:
                 secure: "p9ig5w26wq5BU9x1O6vj+7vtGFjZvEGpAngy9czzr8xC6mP5XAB0wmizPxCtMD4D7uecEUzp9iqUltVf+/nyExh+R6WunPwLO7ki49I2rzUFrYmFtn//gCnJ8NKibckpNFh2PkkgtoV2qrBwEKM8SZilVEVLezODUc6slovg9VpCYKbThLmsGaArcexhoWKbZ4ni1rvBgaLCJj4J3RBewd3QR/7+ydiCRBSDmZfvriYrHG9nb/vW/0Qah4YYsAFkYrQJyYYDqTBc7kU21tLSSWIHkdBzixbmIhDKZxiMj15fBA38aObgWiKHeOFcpRF5ZufSKvaJDKnx0YDK7mQKvcKhGZFlN8bad91v0P3Z127noy6pm0OLaZMQXmvImYqk/sMt5ZTCUKXzvzum6fk3HhDjy7hiH5c9yBjK2pRIAQiu91fyididYnZnjjr5gx9cMLCr3h6iSPG4RHaZzp4BYucEZBjzj5gBS+ce8WNC98nVxgWiiBQGTR2mOBTmapm3pJyHxv2GZ2TyYPqQbsrqBdqM3JFsm6gv/KMUz1lhRf9SgEflp0qY3oPPC8t+7Cp/TWltxun8xEOAGJODMjH5foul49DCJM8kQHjW4wZN0V8NAuumkdRg76fVTX8Wmvxf/azgWXYZsP7n4419y4wBpZaqm4uwb9C2IIBbph4C3js="
 
