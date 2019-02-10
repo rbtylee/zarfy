@@ -7,9 +7,16 @@ install:
   - sudo apt-get -qq update
   - sudo apt-get install -y libgdk-pixbuf2.0-dev libglade2-dev libx11-dev libxrandr-dev libxrender-dev
 
+addons:
+  sonarcloud:
+    organization: "rbtylee-github"
+    token:
+      secure: "Lt4VO8NrWHOuZq3vWYF3Ofj1eljjMpxO19xxPiVbpIpn2irVlTgXp1DA+zgPwTLi6VAoRyH3dyy0nq6smiWpHtWuhZF5IUT1BDF/yhYgkx5hXpihaBRk91ExgDINmNKMf5dpJSxNF0ofnRTSFXSbE9amlrQex9lW/kMe0oXriuhMzeZ2ksAtf+26cO3AzVVlb/NDCIwGtg9VW3Yj64S5OnCYeZC5M4rYs/BufE/PHaVDle2RnTt/HHrJEzkI8PSOQlzT+eq4AN+Ds1u1tBunpvp8VBCRd+by0uVXzeMQr9bQ78/i6lt1cBSSrzCfE+tdfau+1bxoicYeOkZ3nNMrDRULkF0CPlw9CDbdi7oCg2KyIiwf7Gd2HpnIlEMQtisuQ4XiPEBTM3/vGA33qulApKVAx2fMUGAWBZMaOhilf9LO+5PNJev9el7XP05DO/wIWpLKCoGnuy3mfb+2INBX5wLW/eCyFZRbcRrcq1GKT4WWmelkDuUdRWfqq14XzQF7MUh9CM2fJNOo+6qO4hb80Wr1jpd3FVFE3tWIWCNp2gHFCLz41EggXTohIYZzlKtwWuzd/9LuUFWsUAEB6lFu24tvyvXnscGKzOjWV339fwmwV3RTRIraprfgLC04S7IoMBhWwlEqzMIDnvUu0tA1UXuqNlmWenb7z7M2JSIJuao="
+
+
 script:
 - ./autogen.sh
 - make
-
+- sonar-scanner
 notifications:
 email: false
