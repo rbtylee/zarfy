@@ -1,4 +1,5 @@
 # zarfy - a GUI front end for RandR >=1.2
+[![License](http://img.shields.io/badge/license-GPLv3-blue.svg?colorB=9977bb&style=plastic)](https://github.com/rbtylee/zarfy/blob/master/LICENSE)
 [![Build Status](https://travis-ci.com/rbtylee/zarfy.svg?branch=master)](https://travis-ci.com/rbtylee/zarfy)
 
 This repository is a fork from Jim Allingham's [original](https://sourceforge.net/projects/zarfy/). Zarfy is Software Libre released under version 3 of the GPL.
