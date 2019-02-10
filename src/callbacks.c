@@ -450,17 +450,15 @@ refresh_button (GtkLabel *label)
 void
 deselect_output()
 {
-	int i;
-
 	if (selected.monitor) {
 		draw_monitor(selected.idx, MON_PIXMAP);
 
 		ignore_combo_change = TRUE;
 
-		for ( i=selected.output->nmode-1; i>=0; i-- )
+		for (int i=selected.output->nmode-1; i>=0; i-- )
 			gtk_combo_box_remove_text ( modebox, i );
 
-		for ( i=selected.output->nclone; i>=0; i-- )
+		for (int i=selected.output->nclone; i>=0; i-- )
 			gtk_combo_box_remove_text ( clonebox, i );
 
 		ignore_combo_change = FALSE;
