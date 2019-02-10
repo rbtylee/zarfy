@@ -39,7 +39,7 @@ read_config()
 	if  ( (fp=fopen(line, "r")) != NULL ) {
 		for (i=0; i<scres->noutput; i++) {
 			if ( getline(&line, &n, fp) == -1 ) break;
-			if ( sscanf(line, "%10s%lx%hx%lx%d%d%d%d%hx", conf[i].name, &conf[i].crtc,
+			if ( sscanf(line, "%9s%lx%hx%lx%d%d%d%d%hx", conf[i].name, &conf[i].crtc,
 				 &conf[i].connection, &conf[i].mode, &conf[i].width, &conf[i].height,
 	 			&conf[i].x, &conf[i].y, &conf[i].rot) != NCONF ) break;
 			if ( strcmp(conf[i].name, outputs[i]->name) != 0 ) break;
