@@ -11,7 +11,7 @@ jobs:
   include:
     - stage: SonarQube Scan
       env:
-        - SONAR="build-wrapper-linux-x86-64 --out-dir bw-output"
+        - SONAR="build-wrapper-linux-x86-64 bw-output"
       cache:
         directories:
           - $HOME/.sonar/cache
