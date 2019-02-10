@@ -1,7 +1,7 @@
 # zarfy - a GUI front end for RandR >=1.2
 [![Build Status](https://travis-ci.com/rbtylee/zarfy.svg?branch=master)](https://travis-ci.com/rbtylee/zarfy)
 
-This repository is a fork from Jim Allingham's [original](https://sourceforge.net/projects/zarfy/).
+This repository is a fork from Jim Allingham's [original](https://sourceforge.net/projects/zarfy/). Zarfy is Software Libre released under version 3 of the GPL.
 
 The initial commit is based from version 0.1.0. Minor changes have been made since it would no longer build (ubuntu 18.04). Compiler warnings and run time errors were fixed.
 
@@ -109,6 +109,14 @@ Adding support for translations and the translations themselves would be especia
 Please submit patches to the code or documentation as GitHub pull requests!
 
 Contributions must be licensed under this project's copyright (see LICENSE). 
+
+# Credits
+
+Full credit for the original code of this module go to:
+* _*Jim Allingham <supergring0@yahoo.com>*_
+
+Additional modifications:
+* _*Robert Wiley*_
 
 ## Links
 
