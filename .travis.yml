@@ -20,7 +20,7 @@ jobs:
           sonarcloud:
              organization: rbtylee-github
              token:
-               secure: "beFvrdSpEdcPKdRv1gHYHq84ZdMPgWhvylrtliRzM5rf6xQEzJYerUTfF/Nmh7MRALg54tvWwvc1HWkScmkhxqf2HtL6hiSiHeoG7H97znocaMeVJgwclBpTxLMGJHk/oLTgTWwCj3zzoTM2HBqCnj6ocXZoWDvWzuNPEywmxNtOsBu/XPTGhv3C0SCc6wZAoduUfZipXVZQnH4yavbv0AQI7WtkOuXzpaOeEsSSiV3LiWcPajAJkfubt/f9mud7gbAdLiBmymOPbsV/mdI9hMWJakJo7a0XJmngUL3olFl6tTJ4nX3ynZAcHQBpIAmWvuxfGmu56qHeM/gFuZFhJXQaxuKBxeAcgBcMBjzmBnchr2dc/8P541H9v6qDu4UKvbOEvFdOdS7Z8Jbz5g7kf7k+qFz608w+NGzaof/GXK7r+EpQ0aoT5JM0cViRa95pM5jGZXA1nJx2w9oSDFjnzjfjYEeA7pXZdJJXBPnj+nQkfLGV/+6QhZQJRQE/MyUxccvrsDqCqZJ6NY9MPXb1jgsmm8TQ6htpIIYZcuTQZujap0zdRltcF0Kw+mef3t8lBH2oeqxrRusHwc0gdkV6cbTHYukvM1xtaUxg9RtxixKqYEen8KuweoloNoV0XP9QMsPMcFxWMF94es+k7IashmzpbHMuY7gCJkACNPvdbLI="
+               secure: "NP8+yty6t+dxOfFvToRHjAKGeFc8COiiIAM+XYoISIAfNam7IE4wyfX8qYcg9con+9Q4pcAqUITfhhuxQiAeP9yrILXoVJ4baDk33wTs1sazsmUGjuUv4Zo/tLhBoSPh72LPqaxrYDwshRnLRr4NXzHiM6i0UPqqyXe4C1+om2c5r70q4VrDt3JF3ZKzYXFdmSDdFiCyaCB09bE7F/MZkR7Atd9ZZx0/CtUtOQlhS49tTSwvU5TCHy27qzmOt/D1CPjoj8f5N9+rMSH+tFu3ivVrQqBI41BWAuZ3NoIT/a72KsDJF44IWEFO4aCX7VtEcaquaciktgP9ZxB1BW0MXC5OHV4VzJHHmneUfpIWB5etPND+YayUenNExmkCz0zOKgmV3M3Yu/Wm8/S05AWxTpcjHrpew6ukBa7Zabhb3EE77p9dp9QUJ1azlMZO+glcw2d6c1PwEGtHF9NMAJ/seeWHU7XxAfYbreDtyj4SaErqglnRUSwFs2AeEvFlBOAAN+/a8JBLFsy5hRNspv0eD94vTwIp5cyo1gX50A1thaCcM/OssoDHIhZEZwgPysZ50JK2WMjzTs3duk1+BVAwqIEfRX8xcSWFwungSWNsux3OKIQrSYqCI9xF/JjIPo1kLVuuhzivGVPSHeKU2Y390EQVGV//DGyvj3BUuwgfr/M="
 
 script:
 - ./autogen.sh
