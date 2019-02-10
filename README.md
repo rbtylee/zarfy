@@ -126,7 +126,7 @@ Contributions must be licensed under this project's copyright (see LICENSE).
 ## Credits
 
 Full credit for the original code of this module go to:
-*   _Jim Allingham <<mailto:supergring0@yahoo.com>_
+*   _Jim Allingham supergring0@yahoo.com_
 
 Additional modifications:
 *   _Robert Wiley_
