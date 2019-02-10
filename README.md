@@ -32,6 +32,20 @@ make
 sudo make install
 ```
 
+# Usage
+
+In  normal  mode (no command line options) a representation of the virtual screen area is displayed with each 
+active output mapped  onto  it. To  position  an  output device, select it by clicking on it's thumb at the top of the
+window, then click the map area where it should go. By default, the click is interpreted as "right-of", "beneath", 
+etc., relative to the output nearest to the click. Alternately, free  positioning  can be done by clicking off the "snap-to" button.
+
+Zarfy  saves  your  monitor configuration on apply/ok and automatically loads it on next run. For more information
+
+```ShellSession
+man zarfy
+```
+
+
 ## Load & Exit Mode
 
 Command: **zarfy -l**
@@ -126,3 +140,5 @@ how to set up your xorg.conf, etc.
 * http://wiki.debian.org/XStrikeForce/HowToRandR12
 * http://www.thinkwiki.org/wiki/Xorg_RandR_1.2
 * http://www.x.org/wiki/Projects/XRandR
+* [Where is the X.org config file?](https://askubuntu.com/questions/4662/where-is-the-x-org-config-file-how-do-i-configure-x-there)
+
