@@ -46,7 +46,6 @@ Zarfy  saves  your  monitor configuration on apply/ok and automatically loads it
 man zarfy
 ```
 
-
 ## Load & Exit Mode
 
 Command: **zarfy -l**
@@ -54,7 +53,6 @@ Command: **zarfy -l**
 Loads the last configuration and exits - no gui.
 Can be used eg. to configure displays on startup:
 system->preferences->sessions->startup programs->add zarfy -l
-
 
 ## Quick-Switch Mode
 
@@ -101,7 +99,7 @@ with one of the following arguments: "_rotate_none_", "_rotate_left_",
 "_unreflect_y_". The script must be located in
 
 > ~/$XDG_DATA_HOME/zarfy/<x_display_name>/ 
-or if XDG_DATA_HOME is undefined:
+> or if XDG_DATA_HOME is undefined:
 > ~/.local/share/zarfy/<x_display_name>/
 
 and have the name <output_device>_RR.sh, where <output_device>
@@ -128,10 +126,10 @@ Contributions must be licensed under this project's copyright (see LICENSE).
 ## Credits
 
 Full credit for the original code of this module go to:
-* _*Jim Allingham <supergring0@yahoo.com>*_
+*   _Jim Allingham <<mailto:supergring0@yahoo.com>_
 
 Additional modifications:
-* _*Robert Wiley*_
+*   _Robert Wiley_
 
 ## Links
 
