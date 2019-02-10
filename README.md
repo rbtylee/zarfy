@@ -13,12 +13,12 @@ the screen memory. Features free postioning, configuration saving, scripting for
 
 ## Dependencies
 
-* The usual build tools, autopoint libtool intltool pkg-config  autotools-dev
-* gtk+-2.0
-* gdk-pixbuf
-* libglade
-* libxrandr
-* libxrender
+*   The usual build tools, autopoint libtool intltool pkg-config  autotools-dev
+*   gtk+-2.0
+*   gdk-pixbuf
+*   libglade
+*   libxrandr
+*   libxrender
 
 For Debian & debian-based distros
 
