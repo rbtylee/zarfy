@@ -54,7 +54,7 @@
 #define GLADE_XML_ZARFY 	DATA_DIR "/zarfy.glade"
 #define ZARFY_ICON			DATA_DIR "/zarfy.png"
 
-#define MAXCRTC	4
+#define MAXCRTC	32
 #define MAXOUTPUT 10
 #define IMAGE_WIDTH 70
 #define IMAGE_HEIGHT 70
