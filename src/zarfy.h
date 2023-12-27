@@ -62,6 +62,7 @@
 #define SCREEN_WIDTH 62
 #define WIDTH_ADJUST 7
 #define MAP_HEIGHT 300
+#define DEFAULT_MAP_SCALE 0.1
 
 #define ROTATE_MASK (RR_Rotate_0 | RR_Rotate_90 | RR_Rotate_180 | RR_Rotate_270)
 #define REFLECT_MASK (RR_Reflect_X | RR_Reflect_Y)
@@ -177,6 +178,7 @@ void 				get_glade_ptrs	(void);
 void 				init_display(void);
 void 				init_globals(void);
 void				xsetup(void);
+extern double		map_scale;
 
 /* xrr.c */
 void				apply(void);

@@ -2,7 +2,8 @@
 .SH NAME
 zarfy \- A graphical front end to librandr
 .SH SYNOPSIS
-.B zarfy [-l | -s] [-d display]
+.B zarfy [-l | -s] [-d display] [-m [scale]]
+
 .SH DESCRIPTION
 zarfy is a graphical front end to libXrandr, allowing for on-the-fly configuration
 of multiple monitors with no need for restarting the Xserver. 
@@ -33,6 +34,9 @@ to step between combos, enter to select & exit, or use the mouse.
 .TP
 .B \-d display
 Specify the X display name. If not given, defaults to current display.
+.TP
+.B \-m [scale]
+Specify the scale factor of the the virtual screen area. The default scale is 0.1.
 .SH SEE ALSO
 arandr, xrandr
 .SH BUGS

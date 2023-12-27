@@ -127,7 +127,10 @@ gint
 map_click()
 {
 	int x, y;
-	double scale= ( double )maxheight / ( double )map_da->allocation.height;
+	double scale = 1/map_scale;
+
+	if (scale == 0)
+		scale= (double)maxheight / (double)(map_da->allocation.height);
 
 	if ( selected.crtc == NULL ) return FALSE;
 

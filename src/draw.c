@@ -92,7 +92,7 @@ draw_monitor(int idx, char *filename)
 	                                       w, IMAGE_HEIGHT, FALSE, NULL);
 	clear_window(mntrs[idx], mntr_pms[idx]);
 
-/* thumbnail x offset into monitor image */
+	/* thumbnail x offset into monitor image */
 	thumb[idx].offset = (mntrs[idx]->allocation.width - gdk_pixbuf_get_width(pb))/2;
 	
 	gdk_draw_pixbuf(mntr_pms[idx], draw_gc, pb,
@@ -131,40 +131,45 @@ draw_thumb(int idx, XRRCrtcInfo *ci, GdkPixbuf *screenshot, double scale)
 												
 	thm[0] = ss;
 
-	if ( ci->rotation & RR_Reflect_X )
-		thm[r+1] = gdk_pixbuf_flip(thm[r++], TRUE);
+	if ( ci->rotation & RR_Reflect_X ) {
+		thm[r+1] = gdk_pixbuf_flip(thm[r], TRUE);
+		r++;
+	}
 
-	if ( ci->rotation & RR_Reflect_Y )
-		thm[r+1] = gdk_pixbuf_flip(thm[r++], FALSE);
+	if ( ci->rotation & RR_Reflect_Y ) {
+		thm[r+1] = gdk_pixbuf_flip(thm[r], FALSE);
+		r++;
+	}
 
 	switch ( ci->rotation & 0xf )
 	{
 		case RR_Rotate_90:
-			thm[r+1] = gdk_pixbuf_rotate_simple(thm[r++],
+			thm[r+1] = gdk_pixbuf_rotate_simple(thm[r],
 							GDK_PIXBUF_ROTATE_COUNTERCLOCKWISE);
+			r++;
 			break;
 		case RR_Rotate_180:
-			thm[r+1] = gdk_pixbuf_rotate_simple(thm[r++],
+			thm[r+1] = gdk_pixbuf_rotate_simple(thm[r],
 							GDK_PIXBUF_ROTATE_UPSIDEDOWN);
+			r++;
 			break;
 		case RR_Rotate_270:
-			thm[r+1] = gdk_pixbuf_rotate_simple(thm[r++],
+			thm[r+1] = gdk_pixbuf_rotate_simple(thm[r],
 							GDK_PIXBUF_ROTATE_CLOCKWISE);
+			r++;
 	}
 
-	thm[r+1] = gdk_pixbuf_scale_simple(thm[r++], thumb[idx].width, IMAGE_HEIGHT-HEIGHT_ADJUST,
+	thm[r+1] = gdk_pixbuf_scale_simple(thm[r], thumb[idx].width, IMAGE_HEIGHT-HEIGHT_ADJUST,
 							GDK_INTERP_BILINEAR);
+	r++;
 
-   if (thm[r])
-		gdk_pixbuf_render_to_drawable(thm[r], mntr_pms[idx], draw_gc, 0, 0,
+	gdk_pixbuf_render_to_drawable(thm[r], mntr_pms[idx], draw_gc, 0, 0,
 									FRAME_X+thumb[idx].offset, FRAME_Y,
 									gdk_pixbuf_get_width(thm[r]),
 									gdk_pixbuf_get_height(thm[r]),
 									GDK_RGB_DITHER_NORMAL, 0, 0);
 
-	for ( i=0;i<=r;i++ ) 
-		if (thm[i])
-			g_object_unref(G_OBJECT(thm[i]));
+	for ( i=0;i<=r;i++ ) g_object_unref(thm[i]);
 }
 
 void
@@ -172,8 +177,11 @@ draw_map()
 {
 	GdkPixbuf *screenshot, *ss_scaled;
 	GdkColor white = WHITE;
-	double scale= (double)(map_da->allocation.height) / (double)maxheight;
+	double scale = map_scale;
 	int  i;
+
+	if (scale == 0)
+		scale= (double)(map_da->allocation.height) / (double)maxheight;
 
 	clear_window(map_da, map_pm);
 
@@ -226,4 +234,3 @@ draw_map()
 	expose_thumbs();
 	expose_map();
 }
-

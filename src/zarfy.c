@@ -56,6 +56,7 @@ GdkCursor				*gdkptr;
 GtkCheckButton			*snapto;
 GtkDialog				*alloff_warning;
 GtkLabel				*legend[MAXOUTPUT];
+double map_scale = DEFAULT_MAP_SCALE;
 
 void
 bail (char *format, ...)
@@ -273,7 +274,7 @@ xsetup()
 void
 usage()
 {
-	printf("Usage: zarfy [-l | -s] [-d display]\n");
+	printf("Usage: zarfy [-l | -s] [-d display] [-m [scale]]\n");
 	exit(1);
 }
 
@@ -298,6 +299,12 @@ main(int argc, char **argv)
 				display_name = argv[i];
 			else
 				usage();
+		}
+		else if ( !strcmp(argv[i], "-m") ) {
+			map_scale = 0; // use actual
+			i++;
+			if (i < argc)
+				sscanf(argv[i],"%lf",&map_scale);
 		}
 		else
 			usage();
