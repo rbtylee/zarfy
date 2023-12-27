@@ -20,6 +20,13 @@
 
 #include "zarfy.h"
 
+// External var
+int						minheight, minwidth;
+XRRCrtcInfo				*s_crtcs[MAXCRTC];
+XRRCrtcInfo				*crtcs[MAXCRTC];
+XRRScreenResources   	*scres;
+XRRScreenResources 		*s_scres;
+
 XRRModeInfo *
 mode_info(RRMode mode)
 {

@@ -20,6 +20,43 @@
 
 #include "zarfy.h"
 
+// External vars
+GtkWidget				*legend_da[MAXOUTPUT];
+GdkPixmap				*legend_da_pms[MAXOUTPUT];
+Display					*disp;
+Window					rootwin;
+int						screen;
+int						cycle;
+Bool					switch_mode;
+Bool					onflg;
+Bool					gtk_started;
+Bool					ignore_combo_change;
+char					*display_name;
+char					*home;
+GtkWindow				*window1;
+GtkLabel				*labels[MAXOUTPUT];
+GtkComboBox				*modebox;
+GtkTable				*rbtns;
+GtkRadioButton			*rot[6];
+GtkCheckButton			*offbtn;
+GtkComboBox				*clonebox;
+GtkWidget				*map_da;
+GdkPixmap				*map_pm;
+GtkLabel				*max_label, *cur_label;
+GtkDialog				*about_dialog;
+GtkLabel				*about_lbl;
+GtkDialog				*credits_dialog;
+GtkLabel				*credits_lbl;
+GtkDialog				*license_dialog;
+GladeXML				*xml;
+GtkWidget				*mntrs[MAXOUTPUT];
+GdkPixmap				*mntr_pms[MAXOUTPUT];
+GdkCursor				*gdkhand;
+GdkCursor				*gdkptr;
+GtkCheckButton			*snapto;
+GtkDialog				*alloff_warning;
+GtkLabel				*legend[MAXOUTPUT];
+
 void
 bail (char *format, ...)
 {

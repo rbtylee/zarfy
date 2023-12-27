@@ -22,6 +22,9 @@
 
 #include "zarfy.h"
 
+// External var
+XRROutputInfo	*outputs[MAXOUTPUT];
+
 #define				SW_WIDTH		80
 #define				BORDER_WIDTH	5
 #define				CELL_WIDTH		(SW_WIDTH + BORDER_WIDTH)

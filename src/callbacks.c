@@ -20,6 +20,10 @@
 
 #include "zarfy.h"
 
+// External var
+int			screen_width, screen_height;
+Selected 	selected;
+
 /* expose the crtc map */
 gint
 expose_map ()

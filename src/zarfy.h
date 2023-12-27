@@ -82,36 +82,46 @@
 #define LTGREY {0,0xd3ff,0xd3ff,0xddff}
 #define WHITE {0,0xffff,0xffff,0xffff}
 
-Display					*disp;
-Window					rootwin;
-int						screen;
-int						minwidth, maxwidth, minheight, maxheight;
-int						screen_width, screen_height;
-int						cycle;
-char					*display_name;
-char					*home;
-Bool					switch_mode;
-Bool					onflg;
-Bool					gtk_started;
-Bool					ignore_combo_change;
+extern Display			*disp;
+extern Window			rootwin;
+extern int				screen;
+extern int				minwidth, maxwidth, minheight, maxheight;
+extern int				screen_width, screen_height;
+extern int				cycle;
+extern char				*display_name;
+extern char				*home;
+extern Bool				switch_mode;
+extern Bool				onflg;
+extern Bool				gtk_started;
+extern Bool				ignore_combo_change;
 
 /* output thumbs */
-struct {
+typedef struct _Thumb Thumb;
+
+struct _Thumb {
 	int					width;
 	int					offset;
-} thumb[MAXOUTPUT];
+};
+
+extern Thumb thumb[MAXOUTPUT];
 
 /* currently selected output */
-struct {
+typedef struct _Selected Selected;
+
+struct _Selected {
 	int					idx;
 	GtkWidget			*monitor;
 	GdkPixmap			*pm;
 	XRROutputInfo		*output;
 	XRRCrtcInfo			*crtc;
-} selected;
+};
+
+extern Selected selected;
 
 /* configuration */
-struct {
+typedef struct _Config Config;
+
+struct  _Config {
 	char				name[10];
 	RRCrtc				crtc;
 	Connection			connection;
@@ -121,41 +131,44 @@ struct {
 	int					x;
 	int					y;
 	Rotation			rot;
-} conf[MAXOUTPUT];
+};
+
+extern Config conf[MAXOUTPUT];
+
 #define NCONF 9
 
-XRRScreenResources   	*scres;
-XRRScreenResources 		*s_scres;
-XRRCrtcInfo				*crtcs[MAXCRTC];
-XRRCrtcInfo				*s_crtcs[MAXCRTC];
-XRROutputInfo			*outputs[MAXOUTPUT];
+extern XRRScreenResources   *scres;
+extern XRRScreenResources 	*s_scres;
+extern XRRCrtcInfo			*crtcs[MAXCRTC];
+extern XRRCrtcInfo			*s_crtcs[MAXCRTC];
+extern XRROutputInfo		*outputs[MAXOUTPUT];
 
-GtkWindow				*window1;
-GtkWidget				*mntrs[MAXOUTPUT];
-GdkPixmap				*mntr_pms[MAXOUTPUT];
-GtkLabel				*labels[MAXOUTPUT];
-GtkComboBox				*modebox;
-GtkTable				*rbtns;
-GtkRadioButton			*rot[6];
-GtkCheckButton			*offbtn;
-GtkComboBox				*clonebox;
-GtkWidget				*map_da;
-GdkPixmap				*map_pm;
-GdkGC					*draw_gc;
-GdkCursor				*gdkhand;
-GdkCursor				*gdkptr;
-GtkCheckButton			*snapto;
-GtkDialog				*alloff_warning;
-GtkLabel				*legend[MAXOUTPUT];
-GtkWidget				*legend_da[MAXOUTPUT];
-GdkPixmap				*legend_da_pms[MAXOUTPUT];
-GtkLabel				*max_label, *cur_label;
-GtkDialog				*about_dialog;
-GtkLabel				*about_lbl;
-GtkDialog				*credits_dialog;
-GtkLabel				*credits_lbl;
-GtkDialog				*license_dialog;
-GladeXML				*xml;
+extern GtkWindow			*window1;
+extern GtkWidget			*mntrs[MAXOUTPUT];
+extern GdkPixmap			*mntr_pms[MAXOUTPUT];
+extern GtkLabel				*labels[MAXOUTPUT];
+extern GtkComboBox			*modebox;
+extern GtkTable				*rbtns;
+extern GtkRadioButton		*rot[6];
+extern GtkCheckButton		*offbtn;
+extern GtkComboBox			*clonebox;
+extern GtkWidget			*map_da;
+extern GdkPixmap			*map_pm;
+extern GdkGC				*draw_gc;
+extern GdkCursor			*gdkhand;
+extern GdkCursor			*gdkptr;
+extern GtkCheckButton		*snapto;
+extern GtkDialog			*alloff_warning;
+extern GtkLabel				*legend[MAXOUTPUT];
+extern GtkWidget			*legend_da[MAXOUTPUT];
+extern GdkPixmap			*legend_da_pms[MAXOUTPUT];
+extern  GtkLabel			*max_label, *cur_label;
+extern  GtkDialog			*about_dialog;
+extern  GtkLabel			*about_lbl;
+extern  GtkDialog			*credits_dialog;
+extern  GtkLabel			*credits_lbl;
+extern  GtkDialog			*license_dialog;
+extern  GladeXML			*xml;
 
 /* zarfy.c */
 void 				bail(char *, ...);

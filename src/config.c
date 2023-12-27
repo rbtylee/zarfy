@@ -20,6 +20,10 @@
 
 #include "zarfy.h"
 
+// External var
+int		maxheight, maxwidth;
+Config	conf[MAXOUTPUT];
+
 void _set_data_home(void);
 static char _data_home[PATH_MAX]="";
 #define SAFE_DATA_HOME if (_data_home[0] == '\0') _set_data_home()

@@ -20,6 +20,10 @@
 
 #include "zarfy.h"
 
+// External var
+GdkGC	*draw_gc;
+Thumb	thumb[MAXOUTPUT];
+
 GdkColor colors[MAXOUTPUT] = 
 		{ BLUE, RED, GREEN, ORANGE, YELLOW, AQUA, PINK, LIME, LTBLUE, BLACK };
 
