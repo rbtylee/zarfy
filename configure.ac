@@ -3,15 +3,15 @@ dnl Process this file with autoconf to produce a configure script.
 # get rid of that stupid cache mechanism
 rm -f config.cache
 
-AC_PREREQ(2.61)
+AC_PREREQ([2.71])
 
 # Original Code: https://sourceforge.net/projects/zarfy/
 # James S. Allingham <supergring0@yahoo.com>
-AC_INIT(zarfy, 0.1.1, ylee@bodhilinux.com, zarfy, https://github.com/rbtylee/zarfy)
+AC_INIT([zarfy],[0.1.1],[ylee@bodhilinux.com],[zarfy],[https://github.com/rbtylee/zarfy])
 
 AM_INIT_AUTOMAKE([dist-bzip2])
 AM_MAINTAINER_MODE
-AM_CONFIG_HEADER(config.h)
+AC_CONFIG_HEADERS(config.h)
 
 AC_CONFIG_SRCDIR([src/draw.c])
 
@@ -29,7 +29,7 @@ AC_SUBST(ZARFY_CFLAGS)
 AC_SUBST(ZARFY_LIBS)
 
 AC_PATH_X
-AC_HEADER_STDC
+
 CPPFLAGS="`pkg-config --cflags gtk+-2.0 libglade-2.0` $CPPFLAGS"
 
 AC_CHECK_HEADERS(gtk/gtk.h, [], AC_MSG_ERROR([missing libgtk header files.]))
@@ -39,8 +39,9 @@ AC_CHECK_HEADERS(X11/Xlib.h, [], AC_MSG_ERROR([missing Xlib header files.]))
 AC_CHECK_HEADERS(X11/extensions/Xrandr.h, [], AC_MSG_ERROR([missing libxrandr header files.]))
 AC_CHECK_HEADERS(X11/extensions/Xrender.h, [], AC_MSG_ERROR([missing libxrender header files.]))
 
-AC_OUTPUT([Makefile
+AC_CONFIG_FILES([Makefile
 src/Makefile
 man/Makefile
 ])
+AC_OUTPUT
 
