@@ -3,7 +3,7 @@ dnl Process this file with autoconf to produce a configure script.
 # get rid of that stupid cache mechanism
 rm -f config.cache
 
-AC_PREREQ([2.71])
+AC_PREREQ([2.61])
 
 # Original Code: https://sourceforge.net/projects/zarfy/
 # James S. Allingham <supergring0@yahoo.com>
