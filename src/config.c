@@ -21,7 +21,6 @@
 #include "zarfy.h"
 
 // External var
-int		maxheight, maxwidth;
 Config	conf[MAXOUTPUT];
 
 void _set_data_home(void);

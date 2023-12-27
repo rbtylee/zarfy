@@ -22,6 +22,7 @@
 
 // External var
 int						minheight, minwidth;
+int						maxheight, maxwidth;
 XRRCrtcInfo				*s_crtcs[MAXCRTC];
 XRRCrtcInfo				*crtcs[MAXCRTC];
 XRRScreenResources   	*scres;
@@ -233,7 +234,7 @@ get_xrr_info()
 
 	XRRGetScreenSizeRange (disp, rootwin, &minwidth, &minheight,
 					 &maxwidth, &maxheight);
- 
+
 	if ( !(s_scres = XRRGetScreenResources (disp, rootwin)) )
 		bail ("Failed to get screen resources.");
 
