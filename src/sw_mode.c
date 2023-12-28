@@ -95,7 +95,7 @@ expose_sw()
 }
 
 gint
-button_press_event (GtkWidget *w, GdkEventButton *event, void *d)
+button_press_event (GtkWidget *w __UNUSED__, GdkEventButton *event, void *d __UNUSED__)
 {
 	if (event->button !=1 )return FALSE; /* only left button events */
 	doubleclick = event->type == GDK_2BUTTON_PRESS; 
@@ -103,7 +103,7 @@ button_press_event (GtkWidget *w, GdkEventButton *event, void *d)
 }
 
 gint
-button_release_event (GtkWidget *w, GdkEventButton *event, void *d)
+button_release_event (GtkWidget *w __UNUSED__, GdkEventButton *event, void *d __UNUSED__)
 {
 	if (event->button !=1 ) return FALSE; /* only left button events */
 	
@@ -119,7 +119,7 @@ button_release_event (GtkWidget *w, GdkEventButton *event, void *d)
 }
 
 gint
-key_press_event (GtkWidget *w, GdkEventKey *event, void *d)
+key_press_event (GtkWidget *w __UNUSED__, GdkEventKey *event, void *d __UNUSED__)
 {
 	if ( event->keyval == GDK_Left || event->keyval == GDK_KP_Left ) {
 		sw_deselect();
@@ -161,7 +161,7 @@ sw_border(GdkColor color)
 }
 
 void
-sw_alarm(int sig)
+sw_alarm(int sig __UNUSED__)
 {
 	static int flash_count;
 	

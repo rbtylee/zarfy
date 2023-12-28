@@ -46,7 +46,7 @@
 #include <signal.h>
 
 #define PACKAGE_AUTHORS "James Allingham  \n       Robert Wiley"
-#define PACKAGE_URL "<a href=\"https://github.com/rbtylee/zarfy\">Github</a>"
+#define PACKAGE_URL_LB "<a href=\"PACKAGE_URL\">Github</a>"
 
 #define MON_PIXMAP 			DATA_DIR "/monitor.png"
 #define MON_SEL_PIXMAP 		DATA_DIR "/monitor_s.png"
@@ -86,7 +86,7 @@
 extern Display			*disp;
 extern Window			rootwin;
 extern int				screen;
-extern int				minwidth, maxwidth, minheight, maxheight;
+extern int	    		minwidth, maxwidth, minheight, maxheight;
 extern int				screen_width, screen_height;
 extern int				cycle;
 extern char				*display_name;
@@ -127,8 +127,8 @@ struct  _Config {
 	RRCrtc				crtc;
 	Connection			connection;
 	RRMode				mode;
-	int					width;
-	int					height;
+	unsigned int		width;
+	unsigned int		height;
 	int					x;
 	int					y;
 	Rotation			rot;
@@ -150,7 +150,7 @@ extern GdkPixmap			*mntr_pms[MAXOUTPUT];
 extern GtkLabel				*labels[MAXOUTPUT];
 extern GtkComboBox			*modebox;
 extern GtkTable				*rbtns;
-extern GtkRadioButton		*rot[6];
+extern GtkRadioButton		*rotbtn[6];
 extern GtkCheckButton		*offbtn;
 extern GtkComboBox			*clonebox;
 extern GtkWidget			*map_da;

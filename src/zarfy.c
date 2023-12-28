@@ -37,7 +37,7 @@ GtkWindow				*window1;
 GtkLabel				*labels[MAXOUTPUT];
 GtkComboBox				*modebox;
 GtkTable				*rbtns;
-GtkRadioButton			*rot[6];
+GtkRadioButton			*rotbtn[6];
 GtkCheckButton			*offbtn;
 GtkComboBox				*clonebox;
 GtkWidget				*map_da;
@@ -76,6 +76,7 @@ getmem(size_t count, size_t size)
 	void *ptr;
 	if (  (ptr=calloc(count,size)) ) return ptr;
 	bail("Out of memory\n");
+	return NULL;
 }
 
 void
@@ -127,7 +128,7 @@ get_glade_ptrs()
 	/* rotate/reflect buttons */
 	for ( i=0; i<6; i++ ) {
 		sprintf( lbl, "rbtn%1d", i+1 );
-		rot[i] = (GtkRadioButton *) glade_xml_get_widget(xml,lbl);
+		rotbtn[i] = (GtkRadioButton *) glade_xml_get_widget(xml,lbl);
 	}
 
 	/* legend */
@@ -236,7 +237,7 @@ init_graphics()
 	sprintf( buf, "<b>Zarfy Screen Layout Editor</b>\n\nVersion %s\n\nGTK+ based simple XRandR GUI\n", VERSION );
 	gtk_label_set_markup ( about_lbl, buf );
 	
-	sprintf( buf, "\n <b>Authors:</b> %s\n\n%s\n", PACKAGE_AUTHORS, PACKAGE_URL );
+	sprintf( buf, "\n <b>Authors:</b> %s\n\n%s\n", PACKAGE_AUTHORS, PACKAGE_URL_LB );
 	gtk_label_set_markup (credits_lbl, buf);
 
 	for ( i=0; i<scres->noutput; i++ )

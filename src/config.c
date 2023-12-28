@@ -138,8 +138,8 @@ set_config(XRROutputInfo *oi)
 
 		if ( conf[i].x >= 0 && conf[i].y >=0
 			&& conf[i].width == mi->width && conf[i].height == mi->height
-			&& ( conf[i].x+mi->width <= maxwidth )
-			&& ( conf[i].y+mi->height <= maxheight ) ) {
+			&& ( (int) (conf[i].x+mi->width) <= maxwidth )
+			&& ( (int) (conf[i].y+mi->height) <= maxheight ) ) {
 
 				ci->mode = conf[i].mode;
 				ci->width = mi->width;

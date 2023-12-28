@@ -113,12 +113,12 @@ check_bounds(XRRCrtcInfo *ci)
 {
 	ci->x = max(ci->x, 0);
 
-	if ( (ci->x + ci->width) > maxwidth )
+	if ( (int) (ci->x + ci->width) > maxwidth )
 		ci->x = maxwidth - ci->width;
 
 	ci->y = max(ci->y, 0);
 
-	if ( (ci->y + ci->height) > maxheight )
+	if ( (int) (ci->y + ci->height) > maxheight )
 		ci->y = maxheight - ci->height;
 }
 
@@ -165,26 +165,26 @@ map_click()
 					int dist=0;
 					switch (j) {
 						case 0:
-							if ( y>=crtcs[i]->y && y<crtcs[i]->y+crtcs[i]->height )
-								dist = abs(x-crtcs[i]->x);
+							if ( (int) (y>=crtcs[i]->y && y) < crtcs[i]->y+crtcs[i]->height )
+								dist = x-crtcs[i]->x;
 							else
 								dist = maxwidth;
 							break;
 						case 1:
-							if ( y>=crtcs[i]->y && y<crtcs[i]->y+crtcs[i]->height )
-								dist = abs(x-(crtcs[i]->x+crtcs[i]->width));
+							if ( (int) (y>=crtcs[i]->y && y) < (int) crtcs[i]->y+crtcs[i]->height )
+								dist = x-(crtcs[i]->x+crtcs[i]->width);
 							else
 								dist = maxwidth;
 							break;
 						case 2:
-							if ( x>= crtcs[i]->x && x< crtcs[i]->x+crtcs[i]->width )
-								dist = abs(y-crtcs[i]->y);
+							if ( (int) (x>= crtcs[i]->x && x) < (int) crtcs[i]->x+crtcs[i]->width )
+								dist = y-crtcs[i]->y;
 							else
 								dist = maxheight;
 							break;
 						case 3:
-							if ( x>= crtcs[i]->x && x< crtcs[i]->x+crtcs[i]->width )
-								dist = abs(y-(crtcs[i]->y+crtcs[i]->height));
+							if ( (int) (x>= crtcs[i]->x && x) < (int) crtcs[i]->x+crtcs[i]->width )
+								dist = y-(crtcs[i]->y+crtcs[i]->height);
 							else
 								dist = maxheight;
 					}
@@ -199,8 +199,8 @@ map_click()
 			selected.crtc->x = selected.crtc->y = 0;
 		else {
 			int nx=0, ny=0;
-			Bool inside = ( x>=crtcs[n]->x && x<=crtcs[n]->x+crtcs[n]->width
-						&& y>=crtcs[n]->y && y<=crtcs[n]->y+crtcs[n]->height );
+			Bool inside = ( (int) (x>=crtcs[n]->x && x) <= crtcs[n]->x+crtcs[n]->width
+						&& (int) (y>=crtcs[n]->y && y) <= crtcs[n]->y+crtcs[n]->height );
 
 			if ( inside ) {			/* same-as */
 				nx = crtcs[n]->x;
@@ -226,8 +226,8 @@ map_click()
 					nx = crtcs[n]->x;
 				}
 			}
-			if ( nx >=0 && nx+selected.crtc->width <= maxwidth
-					&& ny>=0 && ny+selected.crtc->height <= maxheight ) {
+			if ( (int) (nx >=0 && nx+selected.crtc->width) <= maxwidth
+					&& (int) (ny>=0 && ny+selected.crtc->height) <= maxheight ) {
 				selected.crtc->x = nx;
 				selected.crtc->y = ny;
 			}
@@ -441,11 +441,12 @@ ok_button (void)
 	do_scripts();
 	write_config();
 	gtk_main_quit();
+	return FALSE;
 }
 
 /* refresh in case a monitor has been connected/disconnected since program start */
 gint
-refresh_button (GtkLabel *label)
+refresh_button (GtkLabel *label __UNUSED__)
 {
 	deselect_output();
 	get_xrr_info();
@@ -566,7 +567,7 @@ setup_selected_widgets()
 	int i;
 
 	for ( i=0; i<6; i++) {
-		ltxt = (char *)gtk_button_get_label( (GtkButton *)rot[i] );
+		ltxt = (char *) gtk_button_get_label( (GtkButton *) rotbtn[i] );
 
 		if ( selected.crtc ) {
 			if ( (!strcmp(ltxt, "Normal") && (selected.crtc->rotations & RR_Rotate_0))
@@ -576,7 +577,7 @@ setup_selected_widgets()
 				|| (!strcmp(ltxt, "Reflect X") && (selected.crtc->rotations & RR_Reflect_X))
 				|| (!strcmp(ltxt, "Reflect Y") && (selected.crtc->rotations & RR_Reflect_Y)) )
 			{
-				gtk_widget_set_sensitive ( (GtkWidget *)rot[i], TRUE );
+				gtk_widget_set_sensitive ( (GtkWidget *) rotbtn[i], TRUE );
 
 				if ( (!strcmp(ltxt, "Normal") && (selected.crtc->rotation & RR_Rotate_0))
 					|| (!strcmp(ltxt, "Left") && (selected.crtc->rotation & RR_Rotate_90))
@@ -585,26 +586,26 @@ setup_selected_widgets()
 					|| (!strcmp(ltxt, "Reflect X") && (selected.crtc->rotation & RR_Reflect_X))
 					|| (!strcmp(ltxt, "Reflect Y") && (selected.crtc->rotation & RR_Reflect_Y)) )
 
-						gtk_toggle_button_set_active ( (GtkToggleButton *)rot[i], TRUE);
+						gtk_toggle_button_set_active ( (GtkToggleButton *) rotbtn[i], TRUE);
 				continue;
 			}
 		}
-		gtk_toggle_button_set_active ( (GtkToggleButton *)rot[i], FALSE);
-		gtk_widget_set_sensitive ( (GtkWidget *)rot[i], FALSE );
+		gtk_toggle_button_set_active ( (GtkToggleButton *) rotbtn[i], FALSE);
+		gtk_widget_set_sensitive ( (GtkWidget *) rotbtn[i], FALSE );
 	}
 
 	if ( selected.crtc ) {
-		gtk_toggle_button_set_active((GtkToggleButton *)offbtn, FALSE);
-		gtk_widget_set_sensitive ( (GtkWidget *)rbtns, TRUE );
+		gtk_toggle_button_set_active((GtkToggleButton *) offbtn, FALSE);
+		gtk_widget_set_sensitive ( (GtkWidget *) rbtns, TRUE );
 		gtk_widget_set_sensitive ( map_da, TRUE );
 		gdk_window_set_cursor (map_da->window, gdkhand);
-		gtk_widget_set_sensitive ( (GtkWidget *)offbtn, TRUE );
+		gtk_widget_set_sensitive ( (GtkWidget *) offbtn, TRUE );
 
 /* to keep things simple, no mode changes allowed while cloned */
 		if ( selected.crtc->noutput >1 ) 
-			gtk_widget_set_sensitive((GtkWidget *)modebox, FALSE);
+			gtk_widget_set_sensitive((GtkWidget *) modebox, FALSE);
 		else
-			gtk_widget_set_sensitive((GtkWidget *)modebox, TRUE);
+			gtk_widget_set_sensitive((GtkWidget *) modebox, TRUE);
 	}
 
 	else {

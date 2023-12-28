@@ -21,8 +21,7 @@
 #include "zarfy.h"
 
 // External var
-int						minheight, minwidth;
-int						maxheight, maxwidth;
+int	   		 minwidth, maxwidth, minheight, maxheight;
 XRRCrtcInfo				*s_crtcs[MAXCRTC];
 XRRCrtcInfo				*crtcs[MAXCRTC];
 XRRScreenResources   	*scres;
@@ -36,7 +35,8 @@ mode_info(RRMode mode)
 	for ( i=0; i<scres->nmode; i++ )
 		if ( scres->modes[i].id == mode ) return &scres->modes[i];
 
-	bail("getmodeinfo: mode 0x%x not found\n",mode);
+	bail("getmodeinfo: mode 0x%x not found\n", mode);
+	return NULL;
 }
 
 XRROutputInfo *
@@ -47,6 +47,7 @@ get_output(char *oname)
 		if ( !(strcmp(outputs[i]->name, oname)) ) return outputs[i];
 
 	bail("get_output: output %s not found\n",oname);
+	return NULL;
 }
 
 XRROutputInfo *
@@ -58,6 +59,7 @@ output_by_id(RROutput oid)
 		if ( scres->outputs[i] == oid ) return outputs[i];
 
 	bail("output_by_id: output 0x%x not found\n");
+	return NULL;
 }
 
 int
@@ -68,6 +70,7 @@ output_idx(XRROutputInfo *oi)
 		if ( outputs[i] == oi ) return i;
 
 	bail("output_idx: output 0x%x\n",oi);
+	return -1;
 }
 
 XRRCrtcInfo *
@@ -81,6 +84,7 @@ get_crtc(RRCrtc c)
 		if ( scres->crtcs[i] == c ) 	return crtcs[i];
 
 	bail("get_crtc: crtc 0x%x not found\n", c);
+	return NULL;
 }
 
 int
@@ -92,7 +96,7 @@ crtc_idx(XRRCrtcInfo *ci)
 		if ( crtcs[i] == ci ) return i;
 
 	bail("crtc_idx: crtc 0x%x not found\n",ci);
-
+	return -1;
 }
 
 /* get preferred mode for an output
@@ -110,7 +114,7 @@ preferred_mode(XRROutputInfo *oi)
 
 	for ( i=0; i< oi->npreferred; i++) {
 		XRRModeInfo *mi = mode_info(oi->modes[i]);
-		if ( mi->width > maxw ) {
+		if ( (int) mi->width > maxw ) {
 			maxw=mi->width;
 			best=mi;
 		}
@@ -341,8 +345,8 @@ apply()
 /* disable any active crtc outside new screen size (else apply fails) */
 	for  ( i=0; i<scres->ncrtc; i++ ) {
 		if (s_crtcs[i]->mode) {
-			if ( (s_crtcs[i]->x + s_crtcs[i]->width) > screen_width
-					|| (s_crtcs[i]->y + s_crtcs[i]->height) > screen_height )
+			if ( (int) (s_crtcs[i]->x + s_crtcs[i]->width) > screen_width
+					|| (int) (s_crtcs[i]->y + s_crtcs[i]->height) > screen_height )
 				disable_crtc(scres->crtcs[i]);
 		}
 	}

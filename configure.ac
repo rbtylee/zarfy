@@ -11,16 +11,19 @@ AC_INIT([zarfy],[0.1.1],[ylee@bodhilinux.com],[zarfy],[https://github.com/rbtyle
 
 AM_INIT_AUTOMAKE([dist-bzip2])
 AM_MAINTAINER_MODE
+AC_CONFIG_MACRO_DIR([m4])
 AC_CONFIG_HEADERS(config.h)
 
 AC_CONFIG_SRCDIR([src/draw.c])
 
 AC_PROG_CC
 AC_PROG_INSTALL
+
 AC_PROG_LN_S
 dnl ---------------
 dnl math
 dnl ---------------
+AC_C___ATTRIBUTE__
 AC_CHECK_FUNCS([floor])
 AC_SEARCH_LIBS([floor], [m], [],
         [AC_MSG_ERROR([Math library not found])])
@@ -30,6 +33,7 @@ AC_SUBST(ZARFY_LIBS)
 
 AC_PATH_X
 
+AX_APPEND_FLAG([-Wno-deprecated-declarations], [CFLAGS])
 CPPFLAGS="`pkg-config --cflags gtk+-2.0 libglade-2.0` $CPPFLAGS"
 
 AC_CHECK_HEADERS(gtk/gtk.h, [], AC_MSG_ERROR([missing libgtk header files.]))
