@@ -75,11 +75,11 @@ write_config(void)
 	SAFE_DATA_HOME;
 	char *buf = getmem( strlen(_data_home) + strlen(disp->display_name) + 30, 1 );
 
-	sprintf( buf, "%s", _data_home);
+	
 
 /* make the config directory if necessary */
 	for ( i=0; i<2; i++ ) {
-		if ( i == 0 ) sprintf( buf, "%s/.zarfy", home);
+		if ( i == 0 ) sprintf( buf, "%s", _data_home);
 		else sprintf( &buf[strlen(buf)], "/%s", disp->display_name);
 
 		if ( access(buf, X_OK ) == -1 ) {
