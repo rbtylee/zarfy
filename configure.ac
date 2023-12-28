@@ -45,3 +45,16 @@ man/Makefile
 ])
 AC_OUTPUT
 
+# report
+txt_strip() {
+  echo "[$]@" | sed -e 's/^[[ \t]]*\([[^ \t]]*\)[[ \t]]*$/\1/g'
+}
+
+echo
+echo "Summary:"
+echo
+cat << SUMMARY_EOF
+ * project.........: $PACKAGE $VERSION
+ * prefix..........: $(txt_strip $prefix)
+ * CFLAGS..........: $(txt_strip $CFLAGS)
+SUMMARY_EOF
