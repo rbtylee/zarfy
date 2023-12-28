@@ -33,10 +33,12 @@ of displays, suitable for launch from a function key. Use the left/right arrow k
 to step between combos, enter to select & exit, or use the mouse.
 .TP
 .B \-d display
-Specify the X display name. If not given, defaults to current display.
+Specify the X display name. If not given, defaults to current display.  If you specify -m without parameter, zarfy will 
+scale automatically (the original behaviour before this change)
 .TP
 .B \-m [scale]
-Specify the scale factor of the the virtual screen area. The default scale is 0.1.
+Specify the scale factor of the the virtual screen area. If you specify -m without 
+a parameter, zarfy will scale automatically. The default scale is 0.1. 
 .SH SEE ALSO
 arandr, xrandr
 .SH BUGS

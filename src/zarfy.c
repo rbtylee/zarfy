@@ -301,7 +301,7 @@ main(int argc, char **argv)
 				usage();
 		}
 		else if ( !strcmp(argv[i], "-m") ) {
-			map_scale = 0; // use actual
+			map_scale = DEFAULT_MAP_SCALE;
 			i++;
 			if (i < argc)
 				sscanf(argv[i],"%lf",&map_scale);
