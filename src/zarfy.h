@@ -45,8 +45,8 @@
 #include <sys/time.h>
 #include <signal.h>
 
-#define PACKAGE_AUTHOR "J.S. Allingham"
-#define AUTHOR_EMAIL "supergring0@yahoo.com"
+#define PACKAGE_AUTHORS "James Allingham  \n       Robert Wiley"
+#define PACKAGE_URL "<a href=\"https://github.com/rbtylee/zarfy\">Github</a>"
 
 #define MON_PIXMAP 			DATA_DIR "/monitor.png"
 #define MON_SEL_PIXMAP 		DATA_DIR "/monitor_s.png"

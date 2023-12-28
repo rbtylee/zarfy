@@ -208,7 +208,7 @@ void
 init_graphics()
 {
 	int i;
-	char buf[100];
+	char buf[120];
 
 	if ( !(xml = glade_xml_new(GLADE_XML_ZARFY, NULL, NULL)) )
 		bail("Error opening glade xml file %s\n",buf);
@@ -233,11 +233,11 @@ init_graphics()
 	gdkptr = gdk_cursor_new(GDK_LEFT_PTR);
 	gdkhand = gdk_cursor_new(GDK_HAND2);
 
-	sprintf( buf, "Zarfy\n\nVersion %s", VERSION );
-	gtk_label_set_text ( about_lbl, buf );
-
-	sprintf( buf, "\nAuthor %s\n\n<%s>\n", PACKAGE_AUTHOR, AUTHOR_EMAIL );
-	gtk_label_set_text (credits_lbl, buf);
+	sprintf( buf, "<b>Zarfy Screen Layout Editor</b>\n\nVersion %s\n\nGTK+ based simple XRandR GUI\n", VERSION );
+	gtk_label_set_markup ( about_lbl, buf );
+	
+	sprintf( buf, "\n <b>Authors:</b> %s\n\n%s\n", PACKAGE_AUTHORS, PACKAGE_URL );
+	gtk_label_set_markup (credits_lbl, buf);
 
 	for ( i=0; i<scres->noutput; i++ )
 		if ( outputs[i]->connection == RR_Connected )
