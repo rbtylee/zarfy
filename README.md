@@ -130,6 +130,7 @@ Full credit for the original code of this module go to:
 
 Additional modifications:
 *   _Robert Wiley_
+*   _[James Bond](http://chiselapp.com/user/jamesbond/repository/zarfy/home)_
 
 ## Links
 
