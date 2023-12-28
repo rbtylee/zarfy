@@ -15,7 +15,9 @@ By default, the click is interpreted as "right-of", "beneath", etc., relative to
 nearest to the click. Alternately, free positioning can be done by clicking off the "snap-to"
 button.
 
-zarfy saves your monitor configuration on apply/ok and automatically loads it on next run.
+zarfy saves your monitor configuration on apply/ok and automatically loads it on next run. The configuration
+file is saved to ~/$XDG_DATA_HOME/zarfy/$DISPLAY or if XDG_DATA_HOME is undefined:
+ ~/.local/share/zarfy/$DISPLAY.
 
 zarfy supports scripting for rotation/reflection. If you have a script for adjusting an input device
 when a monitor is rotated/reflected (eg. tablet pc users), it can be set to execute autmatically when zarfy

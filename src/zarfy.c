@@ -233,7 +233,7 @@ init_graphics()
 	gdkptr = gdk_cursor_new(GDK_LEFT_PTR);
 	gdkhand = gdk_cursor_new(GDK_HAND2);
 
-	sprintf( buf, "ZARFY\n\nVersion %s", VERSION );
+	sprintf( buf, "Zarfy\n\nVersion %s", VERSION );
 	gtk_label_set_text ( about_lbl, buf );
 
 	sprintf( buf, "\nAuthor %s\n\n<%s>\n", PACKAGE_AUTHOR, AUTHOR_EMAIL );
