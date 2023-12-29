@@ -21,7 +21,7 @@ file is saved to ~/$XDG_DATA_HOME/zarfy/$DISPLAY or if XDG_DATA_HOME is undefine
 
 zarfy supports scripting for rotation/reflection. If you have a script for adjusting an input device
 when a monitor is rotated/reflected (eg. tablet pc users), it can be set to execute autmatically when zarfy
-transforms the output monitor. zarfy looks for scripts of the form "~/.zarfy/<xdisplay_name>/<output_name>_RR.sh" and, if it exists,
+transforms the output monitor. zarfy looks for scripts of the form "~/$XDG_DATA_HOME/zarfy/<xdisplay_name>/<output_name>_RR.sh" and, if it exists,
 executes it with one of the following arguments: "rotate_none", "rotate_left", "rotate_right", "rotate_180",
 "refect_x", "reflect_y", "unreflect_x", "unreflect_y".
 .SH OPTIONS
