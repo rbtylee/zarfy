@@ -12,6 +12,7 @@ AC_INIT([zarfy],[0.1.1],[ylee@bodhilinux.com],[zarfy],[https://github.com/rbtyle
 AM_INIT_AUTOMAKE([dist-bzip2])
 AM_MAINTAINER_MODE
 AC_CONFIG_MACRO_DIR([m4])
+m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES([yes])])
 AC_CONFIG_HEADERS(config.h)
 
 AC_CONFIG_SRCDIR([src/draw.c])
