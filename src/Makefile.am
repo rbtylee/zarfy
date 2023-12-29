@@ -11,7 +11,7 @@ zarfy_SOURCES =	callbacks.c \
 				zarfy.c \
 				config.c \
 				sw_mode.c \
-				zarfy.h
-
+				zarfy.h \
+				zarfy_private.h
 zarfy_LDFLAGS = -rdynamic
 zarfy_LDADD = @ZARFY_LIBS@
