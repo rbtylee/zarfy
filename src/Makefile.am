@@ -1,7 +1,7 @@
 MAINTAINERCLEANFILES = Makefile.in
 
 AM_CPPFLAGS = \
-	-DDATA_DIR=\""$(pkgdatadir)"\" \
+	-DDATA_DIR=\""$(DESTDIR)$(pkgdatadir)"\" \
 	@ZARFY_CFLAGS@
 
 bin_PROGRAMS = zarfy
