@@ -1,5 +1,5 @@
 
-SUBDIRS = src man
+SUBDIRS = src man data
 
 MAINTAINERCLEANFILES = \
 ABOUT-NLS* \
@@ -24,13 +24,5 @@ icondir = $(datadir)/icons/hicolor/48x48/apps
 icon_DATA = data/zarfy.png 
 
 EXTRA_DIST = \
-	data/zarfy.glade \
-	data/monitor.png \
-	data/monitor_s.png \
-	data/monitor_d.png \
-	data/dvi.png \
-	data/lcd.png \
-	data/vga.png \
-	data/tv.png  \
 	$(desktop_DATA) \
-	$(icon_DATA)
+	$(icon_DATA) 
