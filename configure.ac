@@ -43,6 +43,7 @@ AC_CHECK_HEADERS(glade/glade.h, [], AC_MSG_ERROR([missing libglade header files.
 AC_CHECK_HEADERS(X11/Xlib.h, [], AC_MSG_ERROR([missing Xlib header files.]))
 AC_CHECK_HEADERS(X11/extensions/Xrandr.h, [], AC_MSG_ERROR([missing libxrandr header files.]))
 AC_CHECK_HEADERS(X11/extensions/Xrender.h, [], AC_MSG_ERROR([missing libxrender header files.]))
+AC_CHECK_FUNCS(getline)
 
 AC_CONFIG_FILES([Makefile
 src/Makefile

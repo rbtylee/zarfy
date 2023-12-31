@@ -20,6 +20,11 @@
 
 #include "zarfy.h"
 
+#if !defined(HAVE_GETLINE)
+#  define getline(p, n, f) (fgets(*(p), *(n), f) == NULL? -1: strlen(*(p)))
+#endif /* !linux */
+
+
 // External var
 Config	conf[MAXOUTPUT];
 
