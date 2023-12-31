@@ -312,7 +312,7 @@
             <property name="homogeneous">True</property>
             <child>
               <widget class="GtkComboBox" id="modebox">
-                <property name="width_request">160</property>
+                <property name="width_request">190</property>
                 <property name="height_request">15</property>
                 <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
                 <property name="focus_on_click">False</property>
