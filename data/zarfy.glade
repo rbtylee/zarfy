@@ -868,7 +868,7 @@
             </child>
             <child>
               <widget class="GtkButton" id="refresh_button">
-                <property name="width_request">80</property>
+                <property name="width_request">100</property>
                 <property name="height_request">30</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
