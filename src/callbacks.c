@@ -165,26 +165,26 @@ map_click()
 					int dist=0;
 					switch (j) {
 						case 0:
-							if ( (int) (y>=crtcs[i]->y && y) < crtcs[i]->y+crtcs[i]->height )
-								dist = x-crtcs[i]->x;
+							if ( y>=crtcs[i]->y && y<crtcs[i]->y+crtcs[i]->height )
+								dist = abs(x-crtcs[i]->x);
 							else
 								dist = maxwidth;
 							break;
 						case 1:
-							if ( (int) (y>=crtcs[i]->y && y) < (int) crtcs[i]->y+crtcs[i]->height )
-								dist = x-(crtcs[i]->x+crtcs[i]->width);
+							if ( y>=crtcs[i]->y && y<crtcs[i]->y+crtcs[i]->height )
+								dist = abs(x-(crtcs[i]->x+crtcs[i]->width));
 							else
 								dist = maxwidth;
 							break;
 						case 2:
-							if ( (int) (x>= crtcs[i]->x && x) < (int) crtcs[i]->x+crtcs[i]->width )
-								dist = y-crtcs[i]->y;
+							if ( x>= crtcs[i]->x && x< crtcs[i]->x+crtcs[i]->width )
+								dist = abs(y-crtcs[i]->y);
 							else
 								dist = maxheight;
 							break;
 						case 3:
-							if ( (int) (x>= crtcs[i]->x && x) < (int) crtcs[i]->x+crtcs[i]->width )
-								dist = y-(crtcs[i]->y+crtcs[i]->height);
+							if ( x>= crtcs[i]->x && x< crtcs[i]->x+crtcs[i]->width )
+								dist = abs(y-(crtcs[i]->y+crtcs[i]->height));
 							else
 								dist = maxheight;
 					}
@@ -199,8 +199,8 @@ map_click()
 			selected.crtc->x = selected.crtc->y = 0;
 		else {
 			int nx=0, ny=0;
-			Bool inside = ( (int) (x>=crtcs[n]->x && x) <= crtcs[n]->x+crtcs[n]->width
-						&& (int) (y>=crtcs[n]->y && y) <= crtcs[n]->y+crtcs[n]->height );
+			Bool inside = ( x>=crtcs[n]->x && x<=crtcs[n]->x+crtcs[n]->width
+						&& y>=crtcs[n]->y && y<=crtcs[n]->y+crtcs[n]->height );
 
 			if ( inside ) {			/* same-as */
 				nx = crtcs[n]->x;
@@ -226,8 +226,8 @@ map_click()
 					nx = crtcs[n]->x;
 				}
 			}
-			if ( (int) (nx >=0 && nx+selected.crtc->width) <= maxwidth
-					&& (int) (ny>=0 && ny+selected.crtc->height) <= maxheight ) {
+			if ( nx >=0 && nx+selected.crtc->width <= maxwidth
+					&& ny>=0 && ny+selected.crtc->height <= maxheight ) {
 				selected.crtc->x = nx;
 				selected.crtc->y = ny;
 			}
